@@ -22,12 +22,12 @@ if __name__ == '__main__':
 			break
 		else:
 			cur = line.strip().split('\t')
-			if pre[0] == cur[0]:
+			if pre[0] == cur[0] and pre[3] != cur[3]:
 				delta_minute = (int(cur[2])-int(pre[2]))/60
-				if delta_minute <= 120:
+				if delta_minute >= 10 and delta_minute <= 90:
 					delta.append(delta_minute)
 			pre = cur
 	file.close()
 	fig, ax = plt.subplots()
-	plt.hist(delta, bins = 60)
+	plt.hist(delta, bins = 80)
 	plt.show()
