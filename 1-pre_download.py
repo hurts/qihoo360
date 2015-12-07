@@ -48,12 +48,12 @@ def process(di):
 	path = segs[3]
 	nt = network_type(segs[6])
 	fm = segs[9]
-	at = segs[11]
+	at = download_type(segs[11])
 	si = segs[15]
 	data = [m2, logtime, str(logseconds), ip, path, fm, nt, at, si]
 	return data
 
-begin = datetime.datetime(2014, 1, 1, 0, 0, 0)
+begin = datetime.datetime(2014, 10, 1, 0, 0, 0)
 
 def time_to_seconds(logtime):
 	segs = logtime.split(' ')
@@ -71,6 +71,14 @@ def network_type(nt):
 		return '2'
 	elif nt == '6':
 		return '4'
+	else:
+		return '0'
+
+def download_type(at):
+	if at == '6':
+		return '4'
+	elif at == '1' or at == '2' or at == '3':
+		return at
 	else:
 		return '0'
 

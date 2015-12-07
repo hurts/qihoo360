@@ -5,15 +5,40 @@
 # @Usage  : 
 
 from __future__ import division
-import matplotlib.pyplot as plt
 import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
 
 def session(data, session_last, session_n):
-	print session_n, data[0][0], data[0][1], data[len(data)-1][1], len(data)
+	m2 = data[0][0]
+	download_n = [0] * 5
+	browse_n = 0
+	network = []
+	for di in data:
+		if len(di) == 9:
+			download_n[int(di[7])] += 1
+			network.append(di[6])
+		elif len(di) == 6:
+			browse_n += 1
+	start_time = data[0][1]
+	end_time = data[len(data)-1][1]
+	duration = int(data[len(data)-1][2]) - int(data[0][2])
+	if len(network) == 0:
+		network = '0'
+	elif len(network) == 1:
+		network = network[0]
+	else:
+		if '0' in network:
+			network = [i for i in network if i != '0']
+		network = ','.join(list(set(network)))
+	file_out = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/session', 'a')
+	file_out.write(('%s\t%d\t%s\t%s\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%s\n') % (m2, session_n, start_time, end_time, duration, session_last, download_n[1], download_n[2], download_n[3], download_n[4], sum(download_n), browse_n, network))
+	file_out.close()
+
 
 if __name__ == '__main__':
+	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/session', 'w')
+	file.close()
 	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/log_merge', 'r')
 	line = file.readline()
 	pre = line.strip().split('\t')
@@ -57,6 +82,5 @@ if __name__ == '__main__':
 				session_last = 0
 				pre = cur
 				data.append(pre)
-		if session_n == 10000:
-			break
 	file.close()
+	print session_n

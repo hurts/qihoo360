@@ -57,14 +57,11 @@ def process(di):
 	data = [m2, logtime, str(logseconds), ip, path, fm]
 	return data
 
-begin = datetime.datetime(2014, 1, 1, 0, 0, 0)
+begin = datetime.datetime(2014, 10, 1, 0, 0, 0)
 
 def time_to_seconds(logtime):
 	segs = logtime.split(' ')
-	try:
-		year, month, day = segs[0].split('-')
-	except:
-		print segs[0]
+	year, month, day = segs[0].split('-')
 	hour, minute, second = segs[1].split(':')
 	now = datetime.datetime(int(year), int(month), int(day), int(hour), int(minute), int(second))
 	return int((now-begin).total_seconds())
