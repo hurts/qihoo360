@@ -4,7 +4,6 @@
 # @Author : 
 # @Usage  : 
 
-from scipy.stats import gaussian_kde
 import numpy as np
 import matplotlib as mpl
 import matplotlib.pyplot as plt
@@ -37,10 +36,10 @@ def plot_distribution():
 	fig, ax = plt.subplots()
 	ax.set_xscale('log')
 	ax.set_yscale('log')
-	n_bins = 100000
+	n_bins = 10000
 	plt.hist(duration, n_bins, histtype = 'step', label = 'duration')
-	plt.hist(last_session_begin, n_bins, histtype = 'step', label = 'last_session_begin')
-	plt.hist(last_session_end, n_bins, histtype = 'step', label = 'last_session_end')
+	#plt.hist(last_session_begin, n_bins, histtype = 'step', label = 'last_session_begin')
+	#plt.hist(last_session_end, n_bins, histtype = 'step', label = 'last_session_end')
 	plt.legend(loc = 'best')
 	plt.savefig('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/distribution.png')
 

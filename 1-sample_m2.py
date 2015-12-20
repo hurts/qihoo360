@@ -69,8 +69,23 @@ def sample_merge(m2):
 	file_out.close()
 	file.close()
 
+def sample_session(m2):
+	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/session')
+	file_out = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/session_sample', 'w')
+	while 1:
+		line = file.readline()
+		if not line:
+			break
+		else:
+			segs = line.strip().split('\t')
+			if segs[0] in m2:
+				file_out.write(('%s') % (line))
+	file_out.close()
+	file.close()
+
 if __name__ == '__main__':
 	m2 = sample_m2()
 	sample_browse(m2)
 	sample_download(m2)
 	sample_merge(m2)
+	sample_session(m2)
