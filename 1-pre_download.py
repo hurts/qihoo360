@@ -10,8 +10,8 @@ reload(sys)
 sys.setdefaultencoding('utf8')
 
 def pre_download():
-	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/download', 'r')
-	file_out = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/download_pre', 'w')
+	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/download.txt', 'r')
+	file_out = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/download_pre.txt', 'w')
 	line = file.readline()
 	segs = line.strip().split('\t')
 	pre = [segs[0], time_to_seconds(segs[1])]

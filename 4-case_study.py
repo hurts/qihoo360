@@ -15,7 +15,7 @@ mpl.rcParams["font.family"] = "Times New Roman"
 
 m2 = []
 def get_m2():
-	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/m2_sample', 'r')
+	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/m2_sample.txt', 'r')
 	while 1:
 		line = file.readline()
 		if not line:
@@ -26,7 +26,7 @@ def get_m2():
 
 browse = {}
 def get_browse():
-	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/browse_sample', 'r')
+	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/browse_sample.txt', 'r')
 	while 1:
 		line = file.readline()
 		if not line:
@@ -42,7 +42,7 @@ def get_browse():
 
 download = {}
 def get_download():
-	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/download_sample', 'r')
+	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/download_sample.txt', 'r')
 	while 1:
 		line = file.readline()
 		if not line:
@@ -58,7 +58,7 @@ def get_download():
 
 session = {}
 def get_session():
-	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/session_sample', 'r')
+	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/session_sample.txt', 'r')
 	while 1:
 		line = file.readline()
 		if not line:
@@ -119,6 +119,7 @@ def plot_distribution():
 				if si[7] != '0':
 					last_session_begin.append(int(si[7])/86400)
 					last_session_end.append(int(si[8])/86400)
+			'''
 			plt.xlim(xmin = 0, xmax = 60)
 			plt.ylim(ymin = 0, ymax = 0.5)
 			if count >= 2:
@@ -126,7 +127,6 @@ def plot_distribution():
 				fig.axes.get_yaxis().set_visible(False)
 			num_bins = 60
 			n, bins, patches = plt.hist(duration, num_bins, normed = 1)
-			'''
 			plt.xlim(xmin = 0, xmax = 60)
 			plt.ylim(ymin = 0, ymax = 0.5)
 			if count >= 2:
@@ -135,6 +135,13 @@ def plot_distribution():
 			num_bins = 30
 			n, bins, patches = plt.hist(last_session_end, num_bins, normed = 1)
 			'''
+			plt.xlim(xmin = 0, xmax = 60)
+			plt.ylim(ymin = 0, ymax = 0.5)
+			if count >= 2:
+				fig.axes.get_xaxis().set_visible(False)
+				fig.axes.get_yaxis().set_visible(False)
+			num_bins = 30
+			n, bins, patches = plt.hist(last_session_begin, num_bins, normed = 1)
 	plt.show()
 
 if __name__ == '__main__':

@@ -10,7 +10,7 @@ reload(sys)
 sys.setdefaultencoding('utf8')
 
 def get_m2():
-	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/m2', 'r')
+	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/m2.txt', 'r')
 	m2 = []
 	while 1:
 		line = file.readline()
@@ -25,7 +25,7 @@ def get_browse():
 	m2_browse = {}
 	min_now = 86400 * 365
 	max_now = 0
-	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/browse_pre', 'r')
+	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/browse_pre.txt', 'r')
 	while 1:
 		line = file.readline()
 		if not line:
@@ -51,7 +51,7 @@ def get_download():
 	m2_download = {}
 	min_now = 86400 * 365
 	max_now = 0
-	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/download_pre', 'r')
+	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/download_pre.txt', 'r')
 	while 1:
 		line = file.readline()
 		if not line:
@@ -90,7 +90,7 @@ if __name__ == '__main__':
 	m2_download = get_download()
 	m2_all = list(set(m2_browse + m2_download))
 	print len(m2), len(m2_browse), len(m2_download), len(m2_all)
-	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/m2_all', 'w')
+	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/m2_all.txt', 'w')
 	for mi in m2_all:
 		file.write(('%s\n') % (mi))
 	file.close()

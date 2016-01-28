@@ -33,16 +33,16 @@ def session(data, last_session_begin, last_session_end, session_n):
 		if '0' in network:
 			network = [i for i in network if i != '0']
 		network = ','.join(list(set(network)))
-	file_out = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/session', 'a')
+	file_out = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/session.txt', 'a')
 	file_out.write(('%s\t%d\t%s\t%d\t%s\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%s\n') % (m2, session_n, start_time, start_seconds, end_time, end_seconds, duration, last_session_begin, last_session_end, download_n[1], download_n[2], download_n[3], download_n[4], sum(download_n), browse_n, network))
 	file_out.close()
 	return start_seconds, end_seconds
 
 
 if __name__ == '__main__':
-	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/session', 'w')
+	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/session.txt', 'w')
 	file.close()
-	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/log_merge', 'r')
+	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/log_merge.txt', 'r')
 	line = file.readline()
 	pre = line.strip().split('\t')
 	session_n = 0

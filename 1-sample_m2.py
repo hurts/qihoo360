@@ -10,7 +10,7 @@ reload(sys)
 sys.setdefaultencoding('utf8')
 
 def sample_m2():
-	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/m2_all', 'r')
+	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/m2_all.txt', 'r')
 	m2 = []
 	while 1:
 		line = file.readline()
@@ -21,15 +21,15 @@ def sample_m2():
 	file.close()
 	random.seed(628)
 	m2_sample = random.sample(m2, 100)
-	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/m2_sample', 'w')
+	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/m2_sample.txt', 'w')
 	for i in range(100):
 		file.write(('%s\n') % (m2_sample[i]))
 	file.close()
 	return m2_sample
 
 def sample_browse(m2):
-	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/browse_pre', 'r')
-	file_out = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/browse_sample', 'w')
+	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/browse_pre.txt', 'r')
+	file_out = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/browse_sample.txt', 'w')
 	while 1:
 		line = file.readline()
 		if not line:
@@ -42,8 +42,8 @@ def sample_browse(m2):
 	file.close()
 
 def sample_download(m2):
-	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/download_pre', 'r')
-	file_out = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/download_sample', 'w')
+	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/download_pre.txt', 'r')
+	file_out = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/download_sample.txt', 'w')
 	while 1:
 		line = file.readline()
 		if not line:
@@ -56,8 +56,8 @@ def sample_download(m2):
 	file.close()
 
 def sample_merge(m2):
-	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/log_merge', 'r')
-	file_out = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/log_merge_sample', 'w')
+	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/log_merge.txt', 'r')
+	file_out = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/log_merge_sample.txt', 'w')
 	while 1:
 		line = file.readline()
 		if not line:
@@ -70,8 +70,8 @@ def sample_merge(m2):
 	file.close()
 
 def sample_session(m2):
-	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/session')
-	file_out = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/session_sample', 'w')
+	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/session.txt')
+	file_out = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/session_sample.txt', 'w')
 	while 1:
 		line = file.readline()
 		if not line:

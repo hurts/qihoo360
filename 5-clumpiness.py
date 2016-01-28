@@ -13,7 +13,7 @@ sys.setdefaultencoding('utf8')
 
 m2 = []
 def get_m2():
-	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/m2_sample', 'r')
+	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/m2_sample.txt', 'r')
 	while 1:
 		line = file.readline()
 		if not line:
@@ -24,7 +24,7 @@ def get_m2():
 
 session = {}
 def get_session():
-	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/session_sample', 'r')
+	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/session_sample.txt', 'r')
 	while 1:
 		line = file.readline()
 		if not line:
@@ -39,7 +39,7 @@ def get_session():
 	file.close()
 
 def cal_clump():
-	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/session_sample_clump', 'w')
+	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/clumpiness/session_sample_clump.txt', 'w')
 	for mi in m2:
 		x = []
 		for ri in session[mi]:

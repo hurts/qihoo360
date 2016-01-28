@@ -11,9 +11,9 @@ sys.setdefaultencoding('utf8')
 
 def pre_browse():
 	m2_model = {}
-	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/browse', 'r')
-	file_out = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/browse_pre', 'w')
-	file_out_m = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/m2_model', 'w')
+	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/browse.txt', 'r')
+	file_out = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/browse_pre.txt', 'w')
+	file_out_m = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/m2_model.txt', 'w')
 	line = file.readline()
 	segs = line.strip().split('\t')
 	pre = [segs[0], time_to_seconds(segs[1])]

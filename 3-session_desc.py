@@ -13,7 +13,7 @@ sys.setdefaultencoding('utf8')
 
 if __name__ == '__main__':
 	delta = []
-	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/log_merge', 'r')
+	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/log_merge.txt', 'r')
 	line = file.readline()
 	pre = line.strip().split('\t')
 	while 1:

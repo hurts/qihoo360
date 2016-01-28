@@ -18,7 +18,7 @@ def merge(m2, data_x, data_y):
 		else:
 			data[i] = int(data_y[i-data_x_n][1])
 	data_sorted = sorted(data.iteritems(), key = lambda x:x[1], reverse = False)
-	file_out = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/log_merge', 'a')
+	file_out = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/log_merge.txt', 'a')
 	for di in data_sorted:
 		if di[0] < data_x_n:
 			file_out.write(('%s\t%s\n') % (m2, '\t'.join(data_x[di[0]])))
@@ -27,9 +27,9 @@ def merge(m2, data_x, data_y):
 	file_out.close()
 
 if __name__ == '__main__':
-	file_out = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/log_merge', 'w')
+	file_out = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/log_merge.txt', 'w')
 	file_out.close()
-	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/download_pre', 'r')
+	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/download_pre.txt', 'r')
 	download = {}
 	count = 0
 	while 1:
@@ -47,7 +47,7 @@ if __name__ == '__main__':
 		if count%10000 == 0:
 			print count
 	file.close()
-	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/browse_pre', 'r')
+	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/browse_pre.txt', 'r')
 	line = file.readline()
 	pre = line.strip().split('\t')
 	browse = []

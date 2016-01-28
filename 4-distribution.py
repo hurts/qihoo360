@@ -14,7 +14,7 @@ mpl.rcParams["font.family"] = "Times New Roman"
 
 session = []
 def get_session():
-	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/session')
+	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/session.txt')
 	lines = file.readlines()
 	for line in lines:
 		session.append(line.strip().split('\t'))
