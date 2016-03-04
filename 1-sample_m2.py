@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @Date   : 
-# @Author : 
-# @Usage  : 
+# @Date   :
+# @Author :
+# @Usage  :
 
 import random
 import sys

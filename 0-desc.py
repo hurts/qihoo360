@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @Date   : 
-# @Author : 
-# @Usage  : 
+# @Date   :
+# @Author :
+# @Usage  :
 
 import datetime
 import sys
@@ -48,6 +48,8 @@ def get_browse():
 	return m2_browse.keys()
 
 def get_download():
+	count_x = 0
+	count_y = 0
 	m2_download = {}
 	min_now = 86400 * 365
 	max_now = 0
@@ -69,8 +71,13 @@ def get_download():
 			if seconds > max_now:
 				max_now = seconds
 				max_sign = segs[1]
+			if segs[6] != 'N/A':
+				count_y = count_y + 1
+			else:
+				count_x = count_x + 1
 	file.close()
 	print min_sign, max_sign
+	print count_x, count_y
 	return m2_download.keys()
 
 begin = datetime.datetime(2014, 10, 1, 0, 0, 0)
@@ -94,4 +101,3 @@ if __name__ == '__main__':
 	for mi in m2_all:
 		file.write(('%s\n') % (mi))
 	file.close()
-	

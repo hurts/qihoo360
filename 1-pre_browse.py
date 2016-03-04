@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @Date   : 
-# @Author : 
-# @Usage  : 
+# @Date   :
+# @Author :
+# @Usage  :
 
 import datetime
 import sys
@@ -54,7 +54,8 @@ def process(di):
 	ip = segs[2]
 	path = segs[3]
 	fm = segs[12]
-	data = [m2, logtime, str(logseconds), ip, path, fm]
+	si = segs[16]
+	data = [m2, logtime, str(logseconds), ip, path, fm, si]
 	return data
 
 begin = datetime.datetime(2014, 10, 1, 0, 0, 0)
@@ -68,4 +69,3 @@ def time_to_seconds(logtime):
 
 if __name__ == '__main__':
 	pre_browse()
-	

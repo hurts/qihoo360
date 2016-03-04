@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @Date   : 
-# @Author : 
-# @Usage  : 
+# @Date   :
+# @Author :
+# @Usage  :
 
 import sys
 reload(sys)
@@ -31,10 +31,8 @@ if __name__ == '__main__':
 	file_out.close()
 	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/download_pre.txt', 'r')
 	download = {}
-	count = 0
 	while 1:
 		line = file.readline()
-		count += 1
 		if not line:
 			break
 		else:
@@ -44,8 +42,6 @@ if __name__ == '__main__':
 			except:
 				download[segs[0]] = []
 				download[segs[0]].append(segs[1:])
-		if count%10000 == 0:
-			print count
 	file.close()
 	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/browse_pre.txt', 'r')
 	line = file.readline()
@@ -78,5 +74,3 @@ if __name__ == '__main__':
 	for di in download.keys():
 		merge(di, [], download[di])
 	file.close()
-
-

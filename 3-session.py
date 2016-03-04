@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @Date   : 
-# @Author : 
-# @Usage  : 
+# @Date   :
+# @Author :
+# @Usage  :
 
 from __future__ import division
 import sys
@@ -18,7 +18,7 @@ def session(data, last_session_begin, last_session_end, session_n):
 		if len(di) == 9:
 			download_n[int(di[7])] += 1
 			network.append(di[6])
-		elif len(di) == 6:
+		elif len(di) == 7:
 			browse_n += 1
 	start_time = data[0][1]
 	start_seconds = int(data[0][2])
@@ -37,7 +37,6 @@ def session(data, last_session_begin, last_session_end, session_n):
 	file_out.write(('%s\t%d\t%s\t%d\t%s\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%s\n') % (m2, session_n, start_time, start_seconds, end_time, end_seconds, duration, last_session_begin, last_session_end, download_n[1], download_n[2], download_n[3], download_n[4], sum(download_n), browse_n, network))
 	file_out.close()
 	return start_seconds, end_seconds
-
 
 if __name__ == '__main__':
 	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/session.txt', 'w')

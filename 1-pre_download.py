@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @Date   : 
-# @Author : 
-# @Usage  : 
+# @Date   :
+# @Author :
+# @Usage  :
 
 import datetime
 import sys
@@ -31,27 +31,28 @@ def pre_download():
 				else:
 					data_sorted = sorted(data.iteritems(), key = lambda x:x[1], reverse = False)
 					for di in data_sorted:
-						file_out.write(('%s\n') % ('\t'.join(process(di))))
+						segs = di[0].split('\t')
+						m2 = segs[0]
+						logtime = segs[1]
+						logseconds = di[1]
+						ip = segs[2]
+						path = segs[3]
+						nt = network_type(segs[6])
+						fm = segs[9]
+						at = download_type(segs[11])
+						si = segs[15]
+						try:
+							si = str(int(si))
+						except:
+							continue
+						output = [m2, logtime, str(logseconds), ip, path, fm, nt, at, si]
+						file_out.write(('%s\n') % ('\t'.join(output)))
 					pre = cur
 					data = {}
 			else:
 				continue
 	file_out.close()
 	file.close()
-
-def process(di):
-	segs = di[0].split('\t')
-	m2 = segs[0]
-	logtime = segs[1]
-	logseconds = di[1]
-	ip = segs[2]
-	path = segs[3]
-	nt = network_type(segs[6])
-	fm = segs[9]
-	at = download_type(segs[11])
-	si = segs[15]
-	data = [m2, logtime, str(logseconds), ip, path, fm, nt, at, si]
-	return data
 
 begin = datetime.datetime(2014, 10, 1, 0, 0, 0)
 
@@ -84,4 +85,3 @@ def download_type(at):
 
 if __name__ == '__main__':
 	pre_download()
-	
