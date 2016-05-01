@@ -90,13 +90,14 @@ def time_to_seconds(logtime):
 
 if __name__ == '__main__':
 	#m2
-	m2 = get_m2()
+	#m2 = get_m2()
 	#browse
 	m2_browse = get_browse()
 	#download
 	m2_download = get_download()
 	m2_all = list(set(m2_browse + m2_download))
-	print len(m2), len(m2_browse), len(m2_download), len(m2_all)
+	print len(m2_browse), len(m2_download), len(m2_all)
+	#print len(m2), len(m2_browse), len(m2_download), len(m2_all)
 	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/m2_all.txt', 'w')
 	for mi in m2_all:
 		file.write(('%s\n') % (mi))

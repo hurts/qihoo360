@@ -10,38 +10,19 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
 
-cat = {}
-app = {}
+installed = {}
 def get_data():
-	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/open_category_online_backup.txt', 'r')
-	lines = file.readlines()
-	file.close()
-	for line in lines:
-		cat_id, cat_name, cat_num = line.strip().split('\t')
-		cat[cat_id] = cat_name
-	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/app_info.txt', 'r')
-	lines = file.readlines()
-	file.close()
-	for line in lines:
-		segs = line.strip().split('\t')
-		if cat.has_key(segs[1]) and cat.has_key(segs[2]):
-			app[segs[0]] = segs[3]
-
-def behavior():
-	'''
-	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/log_merge.txt', 'r')
-	file_out = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/log_merge_filter.txt', 'w')
+	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/installed.txt', 'r')
 	while 1:
 		line = file.readline()
 		if not line:
 			break
 		else:
 			segs = line.strip().split('\t')
-			if app.has_key(segs[len(segs)-1]):
-				file_out.write(('%s') % (line))
-	file_out.close()
+			installed[segs[0]] = segs[1].split(',')
 	file.close()
-	'''
+
+def behavior():
 	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/behavior.txt', 'w')
 	file.close()
 	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/log_merge_filter.txt', 'r')
@@ -71,6 +52,22 @@ def behavior():
 def extract(m2, data):
 	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/behavior.txt', 'a')
 	data_n = len(data)
+	result = []
+	for i in range(data_n):
+		if len(data[i]) == 8:
+			if data[i][6] == '1':
+				result.append(data[i][1] + '-d-' + data[i][7])
+			elif data[i][6] in ['2', '3', '4']:
+				result.append(data[i][1] + '-u-' + data[i][7])
+		elif len(data[i]) == 6:
+			if data[i][3].find('getAppInfoByIds'):
+				result.append(data[i][1] + '-b-' + data[i][5])
+	if len(result) > 0:
+		file.write(('%s\t%s\n') % (m2, ','.join(result)))
+	file.close()
+	'''
+	file = open('/Users/CJW/Desktop/thu/科研/项目/360/UCD/data/behavior.txt', 'a')
+	data_n = len(data)
 	for i in range(data_n):
 		if len(data[i]) == 8:
 			if app.has_key(data[i][7]):
@@ -96,6 +93,7 @@ def extract(m2, data):
 					else:
 						file.write(('%s\t%s\t%s\t5\n') % (m2, data[i][0], data[i][5]))
 	file.close()
+	'''
 
 count = {}
 type_dict = {'1': '自动更新', '2': '手动更新', '3': '直接下载', '4': '查看详情后下载', '5': '查看详情后未下载'}
@@ -134,9 +132,9 @@ def desc():
 	file.close()
 
 if __name__ == '__main__':
-	get_data()
-	#behavior()
-	desc()
+	#get_data()
+	behavior()
+	#desc()
 	
 
 	
